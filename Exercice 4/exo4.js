@@ -6,6 +6,5 @@ function choix()
     if (day[i].checked)
     {
        document.getElementById('choisir').value = day[i].value
-       console.log(toto);
     }
 }

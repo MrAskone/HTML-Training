@@ -20,21 +20,21 @@
 
     <form id="buttonForm" action="index.html" method="post">
 
-      <button type="button" class="buttons" name="button1" id="startButton"
-      onclick="startClick()">Start</button>
+      <input type="button" class="buttons" name="button1" id="startButton"
+      onclick="startTimer()" value="Start">
 
-      <button type="button" class="buttons" name="button2" id="pauseButton"
-      onclick="pauseClick()">Pause</button>
+      <input type="button" class="buttons" name="button2" id="pauseButton"
+      onclick="pauseTimer()" value="Pause">
 <!--
       <button type="button" class="buttons" name="button4" id="reprendreButton"
       onclick="reprendreClick"> Reprendre </button> -->
 
-      <button type="button" class="buttons" name="button3" id="stopButton"
-      onclick="stopClick()">Stop</button>
+      <input type="button" class="buttons" name="button3" id="stopButton"
+      onclick="resetTimer()" value="Stop">
 
     </form>
 
-    <p><span id="compteur"> 00:00:00 </span> </p>
+    <span id="chronoP"> 00:00:00 </span>
 
   </div>
 
