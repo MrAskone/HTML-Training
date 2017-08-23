@@ -17,13 +17,13 @@
 
     <form action="index.html" method="post">
 
-      <button type="button" name="button" id="hide" onclick="cache()">Cacher</button>
-      <button type="button" name="button" id="show" onclick="affiche()">Afficher</button>
+      <button type="button" name="button" id="hide" onclick="cache('postIt')">Cacher</button>
+      <button type="button" name="button" id="show" onclick="affiche('postIt')">Afficher</button>
 
 
     </form>
 
-    <p>Survole moi et je te montrerai quelque chose de magique!</p>
+    <p id="testeSurvol" onmouseover="textHover('postIt')" onmouseout="textHoverEnd('postIt')"> Survole moi et je te montrerai quelque chose de magique!</p>
 
     <script type="text/javascript" src="exo5.js"></script>
   </body>
