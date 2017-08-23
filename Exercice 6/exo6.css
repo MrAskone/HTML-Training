@@ -1,0 +1,60 @@
+#monChrono
+{
+  width: 200px;
+  border: 1px black solid;
+  border-radius: 6px;
+}
+
+#chronoTitle
+{
+  background-color: white;
+  width: 100px;
+  position: relative;
+  top: -10px;
+  left: 50px;
+}
+
+#interface
+{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+
+#buttonForm
+{
+  width: 180px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.buttons
+{
+  border-radius: 6px;
+  margin-bottom: 20px;
+  margin: auto;
+  font-size: 1.1em;
+}
+
+#pauseButton
+{
+  display: none;
+}
+
+#stopButton
+{
+  display: none;
+}
+
+/*#reprendreButton
+{
+  display: none;
+}*/
+
+#compteur
+{
+  font-size: 2em;
+
+}

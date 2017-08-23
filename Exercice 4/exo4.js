@@ -1,12 +1,11 @@
-var choseWeek = document.getElementById("semaine")
-var choseWeekEnd = document.getElementById("weekend")
+function choix()
+{
+  var day = document.getElementsByName("week")
+  for (var i = 0; i < day.length; i++)
 
-var btnChoix = document.getElementById("button")
-var displayChoix = document.getElementById("choix")
-
-console.log(btnChoix.value + " " + displayChoix.value)
-// function f(first, then){
-//   first = then
-// }
-//
-// btnChoix.onclick = f(choix.placeholder, button.text)
+    if (day[i].checked)
+    {
+       document.getElementById('choisir').value = day[i].value
+       console.log(toto);
+    }
+}
