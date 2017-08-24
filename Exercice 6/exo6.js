@@ -3,7 +3,6 @@ var btn2 = document.getElementById('pauseButton')
 var btn3 = document.getElementById('stopButton')
 var myTimer = document.getElementById('chronoP')
 
-var tpsEcoule = 0
 btn1.paramTps = 0
 btn2.paramTps = 0
 
@@ -29,10 +28,8 @@ function startTimer() {
     myTimer.innerHTML = ajouteUnZero(hours) +
       ":" + ajouteUnZero(minutes) +
       ":" + ajouteUnZero(seconds);
-    // 5- incrémenter le nombre de secondes
-    tpsEcoule += 1;
     btn2.paramTps += 1;
-  }, 1000); 
+  }, 1000);
 }
 
 function ajouteUnZero(unit) {
