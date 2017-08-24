@@ -1,43 +1,75 @@
 var btn1 = document.getElementById('startButton')
 var btn2 = document.getElementById('pauseButton')
 var btn3 = document.getElementById('stopButton')
+var myTimer = document.getElementById('chronoP')
 
 var tpsEcoule = 0
-var paramTps = 0
-
-// (function() {
-//  console.log('hello world')
-// }())
+btn1.paramTps = 0
+btn2.paramTps = 0
 
 
-function startTimer(){
+
+function startTimer() {
+
+  if (btn2.value == "Pause") {
+    console.log("Starting Chrono");
+  }
+
+  btn1.style.display = "none"
+  btn2.style.display = "block"
+  btn3.style.display = "block"
 
   var startTime = new Date();
-decompte = setInterval(function() {
- // 1- Convertir en secondes :
-var seconds = Math.round(
- (new Date().getTime() - startTime.getTime()) / 1000
- + e.target.paramTps); // e représente l'event déclencheur
- // e.target représente l'objet déclencheur
- // ici : bouton start ou bouton pause
- // (cette prop a été ajoutée aux boutons)
- // 2- Extraire les heures:
-var hours = parseInt( seconds / 3600 );
- seconds = seconds % 3600; // secondes restantes
- // 3- Extraire les minutes:
-var minutes = parseInt( seconds / 60 );
- seconds = seconds % 60; // secondes restantes
- // 4- afficher dans le span
- chronoP.innerHTML = ajouteUnZero(hours)
- +":"+ajouteUnZero(minutes)
- +":"+ajouteUnZero(seconds);
- // 5- incrémenter le nombre de secondes
- tpsEcoule += 1;
-
-}, 1000); // fin de function anonyme dans setInterval()
+  decompte = setInterval(function() {
+    var seconds = Math.round((new Date().getTime() - startTime.getTime()) / 1000 + btn1.paramTps);
+    var hours = parseInt(seconds / 3600);
+    seconds = seconds % 3600;
+    var minutes = parseInt(seconds / 60);
+    seconds = seconds % 60;
+    myTimer.innerHTML = ajouteUnZero(hours) +
+      ":" + ajouteUnZero(minutes) +
+      ":" + ajouteUnZero(seconds);
+    // 5- incrémenter le nombre de secondes
+    tpsEcoule += 1;
+    btn2.paramTps += 1;
+  }, 1000); 
 }
 
-function ajouteUnZero(unit){
-  if (unit.length === 1)
-  return '0' + unit
+function ajouteUnZero(unit) {
+  var rslt = unit
+  if (rslt < 10) {
+    rslt = '0' + rslt
+  }
+  return rslt
+}
+
+function pauseTimer() {
+
+  if (btn2.value == "Pause") {
+    console.log("Timer paused");
+    clearInterval(decompte)
+    btn2.value = "Reprendre"
+  } else if (btn2.value == "Reprendre") {
+    console.log("Timer resumed");
+    startTimer()
+    btn2.value = "Pause"
+    btn1.paramTps = btn2.paramTps
+  }
+}
+
+function resetTimer() {
+
+  console.log("Timer reset");
+
+  clearInterval(decompte)
+
+  btn1.paramTps = 0
+  btn2.paramTps = 0
+  myTimer.innerHTML = "--:--:--"
+
+  btn1.style.display = "block"
+  btn2.style.display = "none"
+  btn3.style.display = "none"
+
+  decompte = 0
 }
