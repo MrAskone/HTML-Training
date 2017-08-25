@@ -3,6 +3,8 @@ var bt2SupLast = document.getElementById("btnRemoveLast")
 var bt3SupSelect = document.getElementById("btnRemoveSelected")
 var bt4Modif = document.getElementById("btnModifySelected")
 
+var tempIndex = 0
+
 var aOfTablo = []
 aOfTablo[0] = []
 aOfTablo[0]["nom"] = "Pagan"
@@ -35,23 +37,26 @@ function buildTableau() {
   document.getElementById('mon_tableau').innerHTML = sHTML;
 }
 
-
-
 function editUser(iTab) {
   document.getElementById('nom').value = aOfTablo[iTab]["nom"];
   document.getElementById('prenom').value = aOfTablo[iTab]["prenom"];
   document.getElementById('age').value = aOfTablo[iTab]["age"];
   console.log(iTab);
+  tempIndex = iTab
 }
 
 function addUser() {
   var iNewIndice = aOfTablo.length;
+
+  var duplicate
+
+  for (var i = 0; i < iNewIndice ; i++)
+
   aOfTablo[iNewIndice] = [];
   aOfTablo[iNewIndice]["nom"] = document.getElementById('nom').value;
   aOfTablo[iNewIndice]["prenom"] = document.getElementById('prenom').value;
   aOfTablo[iNewIndice]["age"] = document.getElementById('age').value;
 
-  // Add DUPLICATE CHECK
 
   buildTableau();
 }
@@ -73,17 +78,24 @@ function removeSelected() {
       aOfTablo[i]["prenom"] === firstName &&
       aOfTablo[i]["age"] === ageOfUser) {
       aOfTablo.splice(i, 1)
-      document.getElementById('mon_tableau').deleteRow(i + 1)
+      buildTableau();
       console.log("Row number " + i + " has been deleted")
       i--
     }
 }
 
+function modifySelection(){
 
-// function modifySelection() {
-// }
+  console.log(tempIndex);
+  aOfTablo[tempIndex]["nom"] = document.getElementById('nom').value;
+  aOfTablo[tempIndex]["prenom"] = document.getElementById('prenom').value;
+  aOfTablo[tempIndex]["age"] = document.getElementById('age').value;
+
+  buildTableau();
+
+}
 
 bt1Add.addEventListener("click" , addUser, false)
 bt2SupLast.addEventListener("click" , removeLastUser, false)
 bt3SupSelect.addEventListener("click" , removeSelected, false)
-// bt4Modif.addEventListener("click" , addUser, false)
+bt4Modif.addEventListener("click" , modifySelection, false)
