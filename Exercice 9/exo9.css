@@ -1,0 +1,21 @@
+#navBox
+{
+  display: flex;
+  flex-direction: row;
+
+}
+
+#listButton
+{
+  margin-right: 15px;
+}
+
+.element:nth-child(2)
+{
+  flex: 1;
+}
+
+#listText, input
+{
+  width: 100%;
+}
