@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Page d'Inscription</title>
+  <link rel="stylesheet" href="inscriptionAstro.css">
+</head>
+
+<body>
+
+  <h1>Bienvenue sur la page d'Inscription</h1>
+
+  <h2>Formulaire</h2>
+
+  <form action="index.html" method="post">
+
+    <div id="myForm">
+
+      <div id="infoType">
+
+        <p>NomUtilisateur:<br> PrenomUtilisateur:
+          <br> Date de Naissance:<br> Pseudo:
+        </p>
+
+      </div>
+
+      <div id="infoField">
+
+        <input type="text" class="userInfo" id="userLastName" value=""><br>
+        <input type="text" class="userInfo" id="userFirstName" value=""><br>
+        <input type="date" class="userInfo" id="userDob" value=""><br>
+        <input type="text" class="userInfo" id="userPseudo" readonly="true" value="">
+
+      </div>
+
+    </div>
+
+    <input type="button" class="button" id="validation" value="Valider">
+    <input type="button" class="button" id="effacer" value="Reset">
+
+
+  </form>
+
+
+
+  <script src="inscriptionAstro.js">
+  </script>
+</body>
+
+</html>

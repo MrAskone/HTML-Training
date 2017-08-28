@@ -1,4 +1,35 @@
+#allButtons
+{
+  display: flex;
+  align-items: baseline;
+}
+
+#modifType
+{
+  margin-right: 5px;
+  font-size: 1.1em;
+}
+
+#modifButtons
+{
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+
 #mon_tableau
 {
-  border: solid black 1px
+  border: solid black 1px;
+  border-collapse: collapse;
+}
+
+td
+{
+  width: 100px;
+  border: solid #7f2be5 1px;
+}
+
+.selectedLine
+{
+  transition: 1s;
+  background-color: #5494f9;
 }

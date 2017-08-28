@@ -1,9 +1,15 @@
+
 var bt1Add = document.getElementById("btnAdd")
-var bt2SupLast = document.getElementById("btnRemoveLast")
+var bt2SupSingle = document.getElementById("btnRemoveSingle")
 var bt3SupSelect = document.getElementById("btnRemoveSelected")
 var bt4Modif = document.getElementById("btnModifySelected")
 
-var tempIndex = 0
+bt1Add.addEventListener("click", addUser, false)
+bt2SupSingle.addEventListener("click", removeSingleUser, false)
+bt3SupSelect.addEventListener("click", removeSelected, false)
+bt4Modif.addEventListener("click", modifySelection, false)
+
+var tempIndex = -1;
 
 var aOfTablo = []
 aOfTablo[0] = []
@@ -14,7 +20,6 @@ aOfTablo[1] = []
 aOfTablo[1]["nom"] = "Mas"
 aOfTablo[1]["prenom"] = "Dominique"
 aOfTablo[1]["age"] = "25"
-
 
 function emptyTableau() {
   document.getElementById('mon_tableau').innerHTML = "";
@@ -37,12 +42,30 @@ function buildTableau() {
   document.getElementById('mon_tableau').innerHTML = sHTML;
 }
 
+(function() {
+  buildTableau()
+}())
+
 function editUser(iTab) {
   document.getElementById('nom').value = aOfTablo[iTab]["nom"];
   document.getElementById('prenom').value = aOfTablo[iTab]["prenom"];
   document.getElementById('age').value = aOfTablo[iTab]["age"];
+
+  colorChange(iTab);
+
   console.log(iTab);
   tempIndex = iTab
+}
+
+function colorChange(indice) {
+
+  var trs = document.querySelectorAll('tr')
+
+  for (var i = 0; i < trs.length; i++) {
+    trs[i].classList.remove('selectedLine')
+  }
+  trs[indice + 1].classList.add('selectedLine')
+
 }
 
 function addUser() {
@@ -50,9 +73,9 @@ function addUser() {
 
   var duplicate
 
-  for (var i = 0; i < iNewIndice ; i++)
+  for (var i = 0; i < iNewIndice; i++)
 
-  aOfTablo[iNewIndice] = [];
+    aOfTablo[iNewIndice] = [];
   aOfTablo[iNewIndice]["nom"] = document.getElementById('nom').value;
   aOfTablo[iNewIndice]["prenom"] = document.getElementById('prenom').value;
   aOfTablo[iNewIndice]["age"] = document.getElementById('age').value;
@@ -61,41 +84,53 @@ function addUser() {
   buildTableau();
 }
 
-function removeLastUser() {
-  aOfTablo.pop()
-  document.getElementById('mon_tableau').deleteRow(-1)
+function removeSingleUser() {
+
+  if (tempIndex >= 0) {
+    aOfTablo.splice(tempIndex, 1);
+    buildTableau();
+  }
+
+  tempIndex = -1;
+
 }
 
 function removeSelected() {
 
-  var lastName = document.getElementById('nom').value
-  var firstName = document.getElementById('prenom').value
-  var ageOfUser = document.getElementById('age').value;
+  if (tempIndex >= 0) {
 
-  for (var i = 0; i < aOfTablo.length; i++)
+    var lastName = document.getElementById('nom').value
+    var firstName = document.getElementById('prenom').value
+    var ageOfUser = document.getElementById('age').value;
 
-    if (aOfTablo[i]["nom"] === lastName &&
-      aOfTablo[i]["prenom"] === firstName &&
-      aOfTablo[i]["age"] === ageOfUser) {
-      aOfTablo.splice(i, 1)
-      buildTableau();
-      console.log("Row number " + i + " has been deleted")
-      i--
+    for (var i = 0; i < aOfTablo.length; i++) {
+
+      if (aOfTablo[i]["nom"] === lastName &&
+        aOfTablo[i]["prenom"] === firstName &&
+        aOfTablo[i]["age"] === ageOfUser) {
+
+        aOfTablo.splice(i, 1)
+        buildTableau();
+        console.log("Row number " + i + " has been deleted")
+        i--
+      }
     }
+  }
+  tempIndex = -1;
+
 }
 
-function modifySelection(){
+function modifySelection() {
 
-  console.log(tempIndex);
-  aOfTablo[tempIndex]["nom"] = document.getElementById('nom').value;
-  aOfTablo[tempIndex]["prenom"] = document.getElementById('prenom').value;
-  aOfTablo[tempIndex]["age"] = document.getElementById('age').value;
+  if (tempIndex >= 0) {
+
+    console.log(tempIndex);
+    aOfTablo[tempIndex]["nom"] = document.getElementById('nom').value;
+    aOfTablo[tempIndex]["prenom"] = document.getElementById('prenom').value;
+    aOfTablo[tempIndex]["age"] = document.getElementById('age').value;
+
+  }
 
   buildTableau();
 
 }
-
-bt1Add.addEventListener("click" , addUser, false)
-bt2SupLast.addEventListener("click" , removeLastUser, false)
-bt3SupSelect.addEventListener("click" , removeSelected, false)
-bt4Modif.addEventListener("click" , modifySelection, false)

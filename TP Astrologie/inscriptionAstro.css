@@ -1,0 +1,24 @@
+#myForm {
+  display: flex;
+  align-items: baseline;
+}
+
+#infoType {
+  font-size: 1.2em;
+  margin-right: 15px;
+}
+
+#infoField input {
+  width: 180px;
+}
+
+.button {
+  margin: 5px;
+  width: 180px;
+  font-size: 1.2em;
+}
+
+#validation
+{
+  display: none;
+}

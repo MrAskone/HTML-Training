@@ -1,21 +1,48 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>TP de JJS</title>
-  </head>
-  <body>
 
-    Nom : <input type="text" name="nom" id="nom"><br>
-    Prenom : <input type="text" name="prenom" id="prenom"><br>
-    Age ; <input type="text" name="age" id="age"><br>
-    <button type="button" class="button" id="btnAdd">Ajouter</button>
-    <button type="button" class="button" id="btnRemoveLast">Supprimer Dernier</button>
-    <button type="button" class="button" id="btnRemoveSelected">Supprimer Selection</button>
-    <button type="button" class="button" id="btnModifySelected">Modify Selection</button>
-    <table id="mon_tableau">
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="tpjjp.css">
+  <title>TP de JJS</title>
+</head>
+
+<body>
+
+  <form id="allButtons" action="index.html" method="post">
+
+    <div id="modifType">
+
+      <p>Nom :<br>
+      Prénom :<br>
+      Age :</p>
+
+    </div>
+
+    <div id="modifField">
+
+      <input type="text" name="nom" id="nom"><br>
+      <input type="text" name="prenom" id="prenom"><br>
+      <input type="text" name="age" id="age"><br>
+
+    </div>
+
+  </form>
+
+    <div id="modifButtons">
+
+      <button type="button" class="button" id="btnAdd">Ajouter</button>
+      <button type="button" class="button" id="btnRemoveSingle">Supprimer une entrée</button>
+      <button type="button" class="button" id="btnRemoveSelected">Supprimer Selection et Copies</button>
+      <button type="button" class="button" id="btnModifySelected">Modify Selection</button>
+
+    </div>
+
+
+  <table id="mon_tableau">
 
 
     <script src="tpjjp.js"></script>
-  </body>
+</body>
+
 </html>
